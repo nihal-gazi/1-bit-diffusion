@@ -59,4 +59,3 @@ python train_and_eval_both.py
 
 ### 📜 Citation & License
 This project is open-source research. If you find the "Curling vs Explosion" insight useful for your own quantization work, please credit this repository.
-MIT License.
