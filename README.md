@@ -5,12 +5,12 @@
 ![Project Banner](results/comparison_grid.png)
 *(Top: 16-Bit Control | Bottom: 1-Bit Experimental. Note the structural stability of the 1-bit generations.)*
 
-## 🔬 Abstract
+## Abstract
 Current research in model quantization focuses largely on Large Language Models (LLMs). This project investigates the limits of quantization in **Diffusion Models**, specifically testing whether a ResNet-based diffusion architecture can learn complex topological manifolds (handwritten digits '0' and '1') using only **1-bit weights** ($\{-1, 1\}$).
 
 Contrary to the assumption that extreme quantization leads to mode collapse or signal degradation, our experiments demonstrate that **1-bit models prioritize structural information over texture**, leading to superior generalization scores and distinct geometric interpolation behaviors.
 
-## 📊 Key Findings
+## Key Findings
 
 ### 1. Generalization vs. Memorization
 We compared a standard **16-Bit (Float16) ResUNet** against a custom **1-Bit (Binary) ResUNet** trained on the MNIST dataset (Classes 0 & 1). Quantitative evaluation using Euclidean distance in pixel space reveals:
@@ -30,13 +30,13 @@ High-resolution latent walks (120 frames) between class '1' and class '0' reveal
 
 This suggests that 1-bit weights force the model to treat objects as **topologically cohesive entities** rather than independent pixel intensities.
 
-## 🧠 Architecture
+## Architecture
 The model uses a custom `BitResUNet` architecture:
 * **Weights:** Centralized and binarized to $\{-1, 1\}$ during the forward pass using the Straight-Through Estimator (STE).
 * **Backbone:** Residual Blocks with Group Normalization and SiLU activation.
 * **Precision:** Skip connections and activations remain in high precision to allow gradient flow, while the "brain" (convolutional weights) is strictly binary.
 
-## 💻 Usage
+## Usage
 
 ### 1. Installation
 ```bash
